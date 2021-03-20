@@ -7,9 +7,8 @@ const csurf = require('csurf');
 const dotenv = require('dotenv');
 const path = require('path');
 
-
 /* Import config */
-dotenv.config({path: path.resolve(__dirname, '.env')});
+dotenv.config({ path: path.resolve(__dirname, '.env') });
 
 /* Create Express App */
 const app = express();
@@ -20,11 +19,11 @@ app.use(hpp());
 
 /* Set Cookie Settings */
 app.use(
-    session({
-        name: 'session',
-        secret: process.env.COOKIE_SECRET,
-        expires: new Date(Date.now() + 60 * 60 * 1000), // 24 hours
-    })
+  session({
+    name: 'session',
+    secret: process.env.COOKIE_SECRET,
+    expires: new Date(Date.now() + 60 * 60 * 1000), // 24 hours
+  })
 );
 app.use(csurf());
 
@@ -32,8 +31,8 @@ const authRoutes = require('./routes/auth');
 
 app.use('/auth', authRoutes);
 
-app.listen(8080, () => {
-    console.log("I'm listening!");
+app.listen(8888, () => {
+  console.log("I'm listening!");
 });
 
 module.exports = app;
